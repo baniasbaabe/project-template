@@ -5,7 +5,7 @@ install:
 
 @test:
 	@echo "Running tests..."
-	pytest
+	poetry run pytest -n auto --cov=src --cov-report html
 
 activate:
 	@echo "Activating virtual environment..."
@@ -13,8 +13,8 @@ activate:
 
 docs_view:
 	@echo "View API documentation..." 
-	pdoc src --http localhost:8080
+	poetry run pdoc src --http localhost:8080
 
 docs_save:
 	@echo "Save documentation to docs... "
-	pdoc src -o docs
+	poetry run pdoc src -o docs
