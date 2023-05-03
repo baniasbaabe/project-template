@@ -6,56 +6,51 @@ authors = ["{{cookiecutter.author_name}}"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-typeguard = "^2.13.3"
 ipython = "^8.2.0"
 jupyter = "^1.0.0"
 
 
 [tool.poetry.dev-dependencies]
-pre-commit = "^2.19.0"
+pre-commit = "*"
 
 ###############################################################################
 #
 #                                 TESTS
 #
 ###############################################################################
-pytest = "^7.2.0"
-pytest-cov = "^4.0.0"
-pytest-xdist = "^3.0"
-pytest-randomly = "^3.5.0"
-pytest-tldr = "^0.2.5"
-pytest-instafail = "^0.5.0"
-tox = "^3.20.1"
+pytest = "*"
+pytest-cov = "*"
+pytest-xdist = "*"
+pytest-randomly = "*"
+pytest-instafail = "*"
+tox = "*"
 
 ###############################################################################
 #
 #                                 FIXERS
 #
 ###############################################################################
-black = "^22.3.0"
-autoflake = "^1.7.7"
+black = "*"
 isort = "^5.10.1"
-vulture = ">=1.0"
-docformatter = {extras = ["tomli"], version = "^1.5.1"}
+docformatter = {extras = ["tomli"], version = "*"}
 
 ###############################################################################
 #
 #                                 LINTERS
 #
 ###############################################################################
-mypy = "^0.942"
-interrogate = "^1.5.0"
-flake8 = "^4.0.1"
-bandit = "^1.7.0"
-ruff = "^0.0.253"
-yamllint = "^1.28.0"
+mypy = "*"
+interrogate = "*"
+bandit = "*"
+ruff = "*"
+yamllint = "*"
 
 ###############################################################################
 #
 #                                 DOCUMENTATION
 #
 ###############################################################################
-pdoc3 = "^0.10.0"
+pdoc3 = "*"
 
 
 [build-system]

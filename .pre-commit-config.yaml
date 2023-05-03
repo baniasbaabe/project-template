@@ -17,13 +17,9 @@ repos:
       - id: check-case-conflict
       - id: check-docstring-first
 
-  - repo: https://github.com/jendrikseipp/vulture
-    rev: "v2.3"
-    hooks:
-      - id: vulture
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "" # Use the sha / tag you want to point at
+    rev: ""
     hooks:
       - id: mypy
 
@@ -71,14 +67,6 @@ repos:
         entry: yamllint
         language: python
         types: [file, yaml]
-
-    # - id: flake8
-    #   name: flake8
-    #   stages: [commit]
-    #   language: system
-    #   entry: flake8
-    #   types: [python]
-    #   exclude: setup.py
 
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 0.7.0
