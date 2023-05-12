@@ -17,6 +17,15 @@ repos:
       - id: check-case-conflict
       - id: check-docstring-first
 
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.29.0
+    hooks:
+      - id: yamllint
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
+    rev: v1.0.5
+    hooks:
+      - id: python-bandit-vulnerability-check
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: ""
@@ -24,27 +33,24 @@ repos:
       - id: mypy
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-  rev: 'v0.0.245'
-  hooks:
-    - id: ruff
-      args: [--fix, --exit-non-zero-on-fix]
+    rev: "v0.0.245"
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+
+  - repo: https://github.com/psf/black
+    rev: stable
+    hooks:
+      - id: black
+
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.5.0
+    hooks:
+      - id: interrogate
+        args: [--quiet, --fail-under=90]
 
   - repo: local
     hooks:
-      - id: isort
-        name: isort
-        stages: [commit]
-        language: system
-        entry: isort
-        types: [python]
-
-      - id: black
-        name: black
-        stages: [commit]
-        language: system
-        entry: black
-        types: [python]
-
       - id: docformatter
         name: docformatter
         description: "Formats docstrings to follow PEP 257."
@@ -52,21 +58,6 @@ repos:
         args: [-i]
         language: python
         types: [python]
-
-      - id: bandit
-        name: bandit
-        description: "Bandit is a tool for finding common security issues in Python code"
-        entry: bandit
-        language: python
-        language_version: python3
-        types: [python]
-
-      - id: yamllint
-        name: yamllint
-        description: This hook runs yamllint.
-        entry: yamllint
-        language: python
-        types: [file, yaml]
 
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 0.7.0
@@ -93,4 +84,3 @@ repos:
         require_serial: true
         types_or: [jupyter, markdown]
         additional_dependencies: [mypy]
-            
