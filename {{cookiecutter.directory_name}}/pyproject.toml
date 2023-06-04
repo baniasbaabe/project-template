@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "{{cookiecutter.directory_name}}"
+name = "{{ cookiecutter.directory_name }}"
 version = "0.1.0"
 description = ""
-authors = ["{{cookiecutter.author_name}}"]
+authors = ["{{ cookiecutter.author_name }}"]
 
 [tool.poetry.dependencies]
-python = "{{cookiecutter.python_versions}}"
+python = "{{ cookiecutter.python_versions }}"
 ipython = "^8.2.0"
 jupyter = "^1.0.0"
 
