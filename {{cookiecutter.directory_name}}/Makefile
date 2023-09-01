@@ -1,4 +1,4 @@
-install: 
+install:
 	@echo "Installing..."
 	poetry install
 	poetry run pre-commit install
@@ -23,3 +23,7 @@ docs_save:
 check_all:
 	@echo "Checking all files with pre-commit..."
 	pre-commit run --all-files
+
+check_staged:
+	@echo "Checking staged files with pre-commit..."
+	pre-commit run --files $(shell git diff --name-only --cached)

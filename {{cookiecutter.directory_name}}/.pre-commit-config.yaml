@@ -56,6 +56,13 @@ repos:
           additional_dependencies: [tomli]
           args: [--in-place, --config, ./pyproject.toml]
 
+  - repo: https://github.com/adamchainz/blacken-docs
+      rev: 1.16.0
+      hooks:
+        - id: blacken-docs
+          files: '\.(rst|md|markdown|tex)$'
+
+
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 0.7.0
     hooks:
