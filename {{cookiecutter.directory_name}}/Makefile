@@ -10,7 +10,7 @@ activate:
 
 test:
 	@echo "Running tests..."
-	pytest -n auto --cov=src --cov-report html
+	poetry run pytest -n auto --cov=src --cov-report html
 
 docs_view:
 	@echo "View documentation..." 

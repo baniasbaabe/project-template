@@ -10,65 +10,101 @@ ipython = "^8.2.0"
 jupyter = "^1.0.0"
 
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
 pre-commit = "*"
 nbqa = "*"
 
-###############################################################################
-#
-#                                 TESTS
-#
-###############################################################################
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
 pytest = "*"
-pytest-cov = "*"
-pytest-xdist = "*"
 pytest-randomly = "*"
 pytest-instafail = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+hypothesis = "*"
+pytest-xdist = "*"
 nox = "*"
 
-###############################################################################
-#
-#                                 FIXERS
-#
-###############################################################################
-black = "*"
-blacken-docs = "*"
-docformatter = {extras = ["tomli"], version = "*"}
+[tool.poetry.group.linters]
+optional = true
 
-###############################################################################
-#
-#                                 LINTERS
-#
-###############################################################################
+[tool.poetry.group.linters.dependencies]
 mypy = "*"
 interrogate = "*"
-bandit = "*"
 ruff = "*"
+bandit = {extras = ["toml"], version = "*"}
 
-###############################################################################
-#
-#                                 DOCUMENTATION
-#
-###############################################################################
+[tool.poetry.group.fixers]
+optional = true
+
+[tool.poetry.group.fixers.dependencies]
+docformatter = "^1.7.5"
+blacken-docs = "*"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
 pdoc3 = "*"
+
+[tool.ruff]
+select = [
+    # Pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # isort
+    "I"
+]
+
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.interrogate]
+ignore-init-method = true
+fail-under = 60
+exclude = ["tests"]
+
+[tool.mypy]
+disable_error_code = "import-untyped"
+
+[tool.bandit]
+exclude_dirs = ["venv","tests"]
 
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.black]
-line-length = 79
-include = '\.pyi?$'
-exclude = '''
-/(
-	\.git
-| \.hg
-| \.mypy_cache
-| \.tox
-| \.venv
-| _build
-| buck-out
-| build   
-)/ 
-'''
