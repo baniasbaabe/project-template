@@ -37,14 +37,12 @@ optional = true
 mypy = "*"
 interrogate = "*"
 ruff = "*"
-bandit = {extras = ["toml"], version = "*"}
 
 [tool.poetry.group.fixers]
 optional = true
 
 [tool.poetry.group.fixers.dependencies]
 docformatter = "^1.7.5"
-blacken-docs = "*"
 
 [tool.poetry.group.docs]
 optional = true
@@ -53,6 +51,8 @@ optional = true
 pdoc3 = "*"
 
 [tool.ruff]
+extend-include = ["*.ipynb"]
+fix = true
 select = [
     # Pyflakes
     "F",
@@ -60,7 +60,9 @@ select = [
     "E",
     "W",
     # isort
-    "I"
+    "I",
+    # flake8-bandit
+    "S"
 ]
 
 exclude = [
@@ -95,17 +97,16 @@ quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
+line-length = 88
+docstring-code-format = true
 
 [tool.interrogate]
 ignore-init-method = true
-fail-under = 60
+fail-under = 90
 exclude = ["tests"]
 
 [tool.mypy]
 disable_error_code = "import-untyped"
-
-[tool.bandit]
-exclude_dirs = ["venv","tests"]
 
 
 [build-system]
