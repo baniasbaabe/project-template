@@ -51,6 +51,11 @@ repos:
       hooks:
         - id: codespell
 
+    - repo: https://github.com/hadolint/hadolint
+      rev: v2.10.0
+      hooks:
+        - id: hadolint
+
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 0.7.0
     hooks:
