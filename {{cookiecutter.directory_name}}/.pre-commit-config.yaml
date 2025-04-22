@@ -1,69 +1,63 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+    rev: v5.0.0
     hooks:
       - id: check-ast
-      - id: check-added-large-files
-        args: ["--maxkb=1000"]
-      - id: check-shebang-scripts-are-executable
-      - id: check-yaml
-      - id: check-json
-      - id: check-toml
-      - id: pretty-format-json
-        args: ["--autofix"]
       - id: check-merge-conflict
       - id: check-case-conflict
       - id: check-docstring-first
+      - id: check-toml
       - id: debug-statements
+      - id: name-tests-test
+        args: ["--pytest-test-first"]
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.6.14
+    hooks:
+      - id: uv-lock
+
+  - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
+    rev: v1.7.7.23
+    hooks:
+      - id: actionlint
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.24.3
+    hooks:
+      - id: gitleaks
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "v1.7.1"
+    rev: "v1.15.0"
     hooks:
       - id: mypy
 
   - repo: https://github.com/econchick/interrogate
-    rev: 1.5.0
+    rev: 1.7.0
     hooks:
       - id: interrogate
-        args: ["-c", "./pyproject.toml", "-i", "-v"]
+        args: ["-i", "-c", "pyproject.toml"]
         pass_filenames: false
-  
-  - repo: https://github.com/kynan/nbstripout
-    rev: 0.5.0
+
+  - repo: https://github.com/jsh9/pydoclint
+    rev: 0.6.5
     hooks:
-    - id: nbstripout
+      - id: pydoclint
+        args: ["--config", "./pyproject.toml"]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.6
+    rev: v0.11.5
     hooks:
       - id: ruff-format
       - id: ruff
 
-  - repo: https://github.com/PyCQA/docformatter
-    rev: v1.7.5
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.31.1
     hooks:
-      - id: docformatter
-        additional_dependencies: [tomli]
-        args: ["--in-place", "--config", "./pyproject.toml"]
-
-  - repo: https://github.com/codespell-project/codespell
-      rev: v2.2.5
-      hooks:
-        - id: codespell
-
-    - repo: https://github.com/hadolint/hadolint
-      rev: v2.10.0
-      hooks:
-        - id: hadolint
-
-  - repo: https://github.com/nbQA-dev/nbQA
-    rev: 0.7.0
-    hooks:
-      - id: nbqa-mypy
+      - id: typos
+        args: []
+        pass_filenames: false
 
   - repo: https://github.com/commitizen-tools/commitizen
-      rev: v3.13.0
-      hooks:
+    rev: v4.6.0
+    hooks:
       - id: commitizen
-      - id: commitizen-branch
-        stages: [push]
